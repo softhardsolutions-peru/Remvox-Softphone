@@ -8,6 +8,407 @@
   <title>RemVox | Telefonía profesional para tu operación</title>
   <link rel="icon" href="assets/remvox-logo.png">
   <link rel="stylesheet" href="css/styles.css">
+
+  <style>
+    /* =========================================================
+       REMVOX — HERO TECNOLÓGICO + EXTENSIÓN CLICK-TO-DIAL
+       Este bloque vive en index.html para no tocar styles.css.
+       ========================================================= */
+
+    .hero-tech-visual{
+      position:relative;
+      min-height:430px;
+      display:grid;
+      place-items:center;
+      perspective:1100px;
+      isolation:isolate;
+    }
+
+    .tech-orbit{
+      position:absolute;
+      border:1px solid rgba(31,111,178,.16);
+      border-radius:50%;
+      pointer-events:none;
+    }
+    .tech-orbit-a{
+      width:320px;height:320px;
+      animation:orbitFloat 7s ease-in-out infinite;
+    }
+    .tech-orbit-b{
+      width:410px;height:210px;
+      transform:rotate(-20deg);
+      animation:orbitFloatB 9s ease-in-out infinite;
+    }
+    .tech-pulse{
+      position:absolute;
+      width:10px;height:10px;
+      border-radius:50%;
+      background:#1f6fb2;
+      box-shadow:0 0 0 0 rgba(31,111,178,.28);
+      animation:pulseTech 2.4s infinite;
+    }
+    .tech-pulse-a{top:21%;right:18%}
+    .tech-pulse-b{bottom:18%;left:17%;animation-delay:1.1s}
+
+    .softphone-3d-card{
+      position:relative;
+      z-index:4;
+      width:min(360px,82vw);
+      padding:22px;
+      border:1px solid rgba(164,192,216,.54);
+      border-radius:24px;
+      background:
+        radial-gradient(circle at 88% 12%,rgba(53,144,194,.13),transparent 32%),
+        linear-gradient(145deg,rgba(255,255,255,.98),rgba(241,247,251,.96));
+      box-shadow:
+        0 35px 75px rgba(18,49,78,.17),
+        0 14px 28px rgba(18,49,78,.09),
+        inset 0 1px 0 rgba(255,255,255,.9);
+      transform:rotateY(-9deg) rotateX(4deg) translateZ(20px);
+      transform-style:preserve-3d;
+      animation:softphoneFloat 5.6s ease-in-out infinite;
+      overflow:hidden;
+    }
+    .softphone-3d-card::before{
+      content:"";
+      position:absolute;
+      inset:-50% auto auto -35%;
+      width:110px;height:250%;
+      background:linear-gradient(90deg,transparent,rgba(255,255,255,.62),transparent);
+      transform:rotate(22deg);
+      animation:cardShine 7s ease-in-out infinite;
+      pointer-events:none;
+    }
+    .softphone-3d-top{
+      position:relative;
+      z-index:2;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .softphone-brand-mini{display:flex;align-items:center;gap:9px}
+    .softphone-brand-mini img{width:34px;height:34px;object-fit:contain}
+    .softphone-brand-mini strong{display:block;color:#0f2742;font-size:.9rem}
+    .softphone-brand-mini span{display:block;color:#718095;font-size:.66rem;margin-top:1px}
+    .softphone-status{
+      display:inline-flex;align-items:center;gap:6px;
+      padding:6px 9px;border-radius:999px;
+      background:#edf8f5;color:#26795d;
+      font-size:.64rem;font-weight:800;
+      white-space:nowrap;
+    }
+    .softphone-status i{
+      width:6px;height:6px;border-radius:50%;background:#31a877;
+      box-shadow:0 0 0 4px rgba(49,168,119,.11)
+    }
+
+    .softphone-call-zone{
+      position:relative;
+      z-index:2;
+      margin:27px 0 20px;
+      text-align:center;
+    }
+    .call-avatar{
+      width:66px;height:66px;margin:0 auto 12px;
+      display:grid;place-items:center;
+      border-radius:20px;
+      background:linear-gradient(145deg,#0f2742,#1f6fb2);
+      color:white;font-weight:900;
+      box-shadow:0 16px 28px rgba(31,111,178,.22);
+      transform:translateZ(34px);
+    }
+    .call-eyebrow{
+      display:block;color:#2a8099;
+      font-size:.63rem;font-weight:900;
+      text-transform:uppercase;letter-spacing:.09em;
+    }
+    .softphone-call-zone strong{
+      display:block;color:#102b49;font-size:1.15rem;margin:5px 0 3px;
+    }
+    .softphone-call-zone small{color:#7b8795;font-weight:700}
+
+    .softphone-actions{
+      position:relative;z-index:2;
+      display:grid;grid-template-columns:repeat(4,1fr);gap:9px;
+    }
+    .softphone-actions span{
+      height:44px;display:grid;place-items:center;
+      border:1px solid #d9e5ed;border-radius:12px;
+      background:rgba(255,255,255,.82);
+      color:#19466f;font-weight:900;
+      box-shadow:0 8px 16px rgba(15,39,66,.06);
+    }
+
+    .softphone-wave{
+      position:relative;z-index:2;
+      height:28px;margin-top:15px;
+      display:flex;align-items:center;justify-content:center;gap:4px;
+    }
+    .softphone-wave i{
+      width:3px;border-radius:999px;background:#2a8099;
+      animation:waveMove 1.15s ease-in-out infinite;
+    }
+    .softphone-wave i:nth-child(1){height:7px}
+    .softphone-wave i:nth-child(2){height:14px;animation-delay:.08s}
+    .softphone-wave i:nth-child(3){height:20px;animation-delay:.16s}
+    .softphone-wave i:nth-child(4){height:10px;animation-delay:.24s}
+    .softphone-wave i:nth-child(5){height:24px;animation-delay:.32s}
+    .softphone-wave i:nth-child(6){height:15px;animation-delay:.40s}
+    .softphone-wave i:nth-child(7){height:21px;animation-delay:.48s}
+    .softphone-wave i:nth-child(8){height:12px;animation-delay:.56s}
+    .softphone-wave i:nth-child(9){height:7px;animation-delay:.64s}
+
+    .floating-tech-chip{
+      position:absolute;z-index:6;
+      display:flex;align-items:center;gap:10px;
+      padding:11px 13px;
+      border:1px solid rgba(181,205,223,.75);
+      border-radius:14px;
+      background:rgba(255,255,255,.92);
+      box-shadow:0 16px 34px rgba(14,43,68,.12);
+      backdrop-filter:blur(12px);
+      animation:chipFloat 5s ease-in-out infinite;
+    }
+    .floating-tech-chip strong{display:block;color:#103051;font-size:.73rem}
+    .floating-tech-chip span{display:block;color:#708096;font-size:.6rem;margin-top:2px}
+    .chip-browser{left:0;bottom:13%}
+    .chip-browser svg{width:28px;height:28px;fill:none;stroke:#1f6fb2;stroke-width:1.8}
+    .chip-sip{right:0;top:16%;animation-delay:1.2s}
+    .chip-dot{
+      width:12px!important;height:12px!important;border-radius:50%;
+      background:#32a878!important;
+      box-shadow:0 0 0 6px rgba(50,168,120,.11);
+      flex:0 0 auto;
+    }
+
+    .extension-section{
+      position:relative;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at 82% 48%,rgba(42,128,153,.12),transparent 26%),
+        linear-gradient(180deg,#f8fbfd 0%,#ffffff 100%);
+    }
+    .extension-section::before{
+      content:"";
+      position:absolute;
+      width:420px;height:420px;
+      right:-170px;top:-180px;
+      border:1px solid rgba(31,111,178,.1);
+      border-radius:50%;
+    }
+    .extension-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:70px;
+      align-items:center;
+    }
+    .extension-copy h2{
+      max-width:660px;
+      margin:10px 0 14px;
+      color:#0f2742;
+      font-size:clamp(2rem,3.2vw,3.1rem);
+      line-height:1.04;
+      letter-spacing:-.035em;
+    }
+    .extension-copy>p{
+      max-width:650px;color:#607087;line-height:1.7;font-size:.94rem;
+    }
+    .extension-points{
+      display:grid;gap:10px;margin:23px 0 24px;
+    }
+    .extension-points>div{
+      display:flex;align-items:flex-start;gap:13px;
+      padding:12px 14px;
+      border:1px solid #e1eaf1;
+      border-radius:13px;
+      background:rgba(255,255,255,.7);
+    }
+    .extension-points>div>span{
+      width:30px;height:30px;display:grid;place-items:center;
+      border-radius:9px;background:#eaf4fa;
+      color:#1f6fb2;font-size:.68rem;font-weight:900;flex:0 0 auto;
+    }
+    .extension-points p{margin:0}
+    .extension-points strong{display:block;color:#173a5e;font-size:.84rem}
+    .extension-points small{display:block;color:#7a8796;font-size:.72rem;margin-top:2px}
+    .extension-store-btn{display:inline-flex;align-items:center;gap:10px}
+    .chrome-mark{
+      width:22px;height:22px;border-radius:50%;
+      display:inline-block;
+      background:
+        radial-gradient(circle at 50% 50%,#fff 0 21%,#3d8fd1 22% 38%,transparent 39%),
+        conic-gradient(#e45245 0 33%,#e4b341 0 66%,#45a45a 0 100%);
+      box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);
+    }
+
+    .extension-visual{
+      position:relative;
+      min-height:410px;
+      perspective:1200px;
+    }
+    .browser-3d{
+      position:absolute;
+      left:0;top:52px;
+      width:78%;
+      border:1px solid #dbe7ef;
+      border-radius:18px;
+      background:white;
+      box-shadow:0 35px 70px rgba(15,39,66,.14);
+      transform:rotateY(10deg) rotateX(3deg);
+      transform-origin:left center;
+      animation:browserFloat 6s ease-in-out infinite;
+      overflow:hidden;
+    }
+    .browser-bar{
+      height:42px;padding:0 13px;
+      display:flex;align-items:center;gap:7px;
+      background:#f5f8fa;border-bottom:1px solid #e4edf3;
+    }
+    .browser-bar>span{width:8px;height:8px;border-radius:50%;background:#c8d4de}
+    .browser-address{
+      flex:1;margin-left:7px;padding:6px 10px;border-radius:8px;
+      background:#fff;color:#9aa5af;font-size:.62rem;
+      border:1px solid #e6edf2;
+    }
+    .browser-body{padding:28px 24px 32px;min-height:235px}
+    .browser-line{height:9px;border-radius:99px;background:#eaf0f4;margin-bottom:12px}
+    .w70{width:70%}.w45{width:45%}.w80{width:80%}.w55{width:55%}
+    .phone-number-demo{
+      margin:20px 0 22px;
+      border:0;border-radius:12px;
+      background:linear-gradient(135deg,#eaf5fb,#f7fbfd);
+      color:#125a91;font-weight:900;font-size:1rem;
+      padding:13px 15px;box-shadow:inset 0 0 0 1px #d6e8f2;
+    }
+    .phone-number-demo span{margin-right:7px}
+
+    .remvox-mini-device{
+      position:absolute;
+      z-index:5;
+      right:0;bottom:44px;
+      width:165px;
+      padding:20px;
+      border-radius:20px;
+      background:linear-gradient(145deg,#102a47,#173f68);
+      color:white;
+      box-shadow:0 28px 50px rgba(15,39,66,.28);
+      transform:rotateY(-9deg) translateZ(22px);
+      animation:deviceFloat 5.5s ease-in-out infinite;
+      text-align:center;
+    }
+    .remvox-mini-device img{
+      width:42px;height:42px;object-fit:contain;
+      filter:brightness(0) invert(1);opacity:.95
+    }
+    .remvox-mini-device strong{display:block;margin-top:8px}
+    .remvox-mini-device>span{display:block;margin-top:3px;color:#bdd4e7;font-size:.66rem}
+    .mini-call-button{
+      width:42px;height:42px;margin:15px auto 0;
+      display:grid;place-items:center;border-radius:50%;
+      background:#2aa77c;box-shadow:0 0 0 8px rgba(42,167,124,.12);
+      animation:callPulse 2s infinite;
+    }
+
+    .integration-beam{
+      position:absolute;
+      left:57%;top:48%;
+      width:110px;height:2px;
+      background:linear-gradient(90deg,rgba(31,111,178,.06),#2a8099,rgba(31,111,178,.06));
+      transform:rotate(15deg);
+      z-index:3;
+    }
+    .integration-beam i{
+      position:absolute;top:-3px;width:8px;height:8px;border-radius:50%;background:#2a8099;
+      animation:dataTravel 2s linear infinite;
+    }
+    .integration-beam i:nth-child(2){animation-delay:.65s}
+    .integration-beam i:nth-child(3){animation-delay:1.3s}
+
+    @keyframes softphoneFloat{
+      0%,100%{transform:rotateY(-9deg) rotateX(4deg) translateY(0) translateZ(20px)}
+      50%{transform:rotateY(-4deg) rotateX(1deg) translateY(-12px) translateZ(34px)}
+    }
+    @keyframes browserFloat{
+      0%,100%{transform:rotateY(10deg) rotateX(3deg) translateY(0)}
+      50%{transform:rotateY(6deg) rotateX(1deg) translateY(-9px)}
+    }
+    @keyframes deviceFloat{
+      0%,100%{transform:rotateY(-9deg) translateY(0) translateZ(22px)}
+      50%{transform:rotateY(-4deg) translateY(-11px) translateZ(30px)}
+    }
+    @keyframes chipFloat{
+      0%,100%{transform:translateY(0)}
+      50%{transform:translateY(-9px)}
+    }
+    @keyframes orbitFloat{
+      0%,100%{transform:rotate(0deg) scale(1)}
+      50%{transform:rotate(12deg) scale(1.04)}
+    }
+    @keyframes orbitFloatB{
+      0%,100%{transform:rotate(-20deg) scale(1)}
+      50%{transform:rotate(-7deg) scale(1.03)}
+    }
+    @keyframes pulseTech{
+      0%{box-shadow:0 0 0 0 rgba(31,111,178,.28)}
+      70%{box-shadow:0 0 0 20px rgba(31,111,178,0)}
+      100%{box-shadow:0 0 0 0 rgba(31,111,178,0)}
+    }
+    @keyframes waveMove{
+      0%,100%{transform:scaleY(.55);opacity:.65}
+      50%{transform:scaleY(1.25);opacity:1}
+    }
+    @keyframes cardShine{
+      0%,65%{left:-45%;opacity:0}
+      74%{opacity:.65}
+      90%,100%{left:125%;opacity:0}
+    }
+    @keyframes dataTravel{
+      0%{left:0;opacity:0}
+      15%{opacity:1}
+      85%{opacity:1}
+      100%{left:100%;opacity:0}
+    }
+    @keyframes callPulse{
+      0%{box-shadow:0 0 0 0 rgba(42,167,124,.28)}
+      70%{box-shadow:0 0 0 14px rgba(42,167,124,0)}
+      100%{box-shadow:0 0 0 0 rgba(42,167,124,0)}
+    }
+
+    @media (max-width:1100px){
+      .hero-tech-visual{min-height:360px}
+      .chip-browser{left:2%}
+      .chip-sip{right:2%}
+      .extension-grid{gap:42px}
+    }
+
+    @media (max-width:900px){
+      .hero-tech-visual{min-height:410px;margin-top:10px}
+      .extension-grid{grid-template-columns:1fr}
+      .extension-visual{min-height:390px}
+    }
+
+    @media (max-width:620px){
+      .hero-tech-visual{min-height:365px}
+      .softphone-3d-card{width:min(320px,88vw);padding:18px}
+      .floating-tech-chip{padding:8px 10px}
+      .chip-browser{left:0;bottom:3%}
+      .chip-sip{right:0;top:4%}
+      .tech-orbit-a{width:280px;height:280px}
+      .tech-orbit-b{width:320px;height:180px}
+      .extension-visual{min-height:340px}
+      .browser-3d{width:86%;top:38px}
+      .remvox-mini-device{width:145px;right:0;bottom:30px}
+      .integration-beam{left:53%;width:95px}
+    }
+
+    @media (prefers-reduced-motion:reduce){
+      .softphone-3d-card,.floating-tech-chip,.browser-3d,.remvox-mini-device,
+      .tech-orbit,.tech-pulse,.softphone-wave i,.integration-beam i,
+      .mini-call-button{animation:none!important}
+    }
+  </style>
+
 </head>
 
 <body>
@@ -28,6 +429,7 @@
       <nav class="main-nav" id="mainNav" aria-label="Navegación principal">
         <a href="#funciones">Funciones</a>
         <a href="#operacion">Operación</a>
+        <a href="#extension">Extensión</a>
         <a href="#galeria">Galería</a>
         <a href="#licenciamiento">Licenciamiento</a>
         <a href="#descargas">Descargas</a>
@@ -70,15 +472,55 @@
           </div>
         </div>
 
-        <div class="hero-brand-visual" aria-label="Resumen del producto">
-          <div class="hero-brand-orbit"></div>
-          <div class="hero-brand-card">
-            <img src="assets/remvox-logo.png" alt="Logo RemVox" class="hero-brand-logo">
-            <div class="hero-brand-copy">
-              <span>Para equipos de atención y cobranzas</span>
-              <strong>Telefonía y seguimiento</strong>
-              <small>Todo desde una sola aplicación</small>
+        <div class="hero-tech-visual" aria-label="Visual tecnológico de RemVox">
+          <div class="tech-orbit tech-orbit-a"></div>
+          <div class="tech-orbit tech-orbit-b"></div>
+          <div class="tech-pulse tech-pulse-a"></div>
+          <div class="tech-pulse tech-pulse-b"></div>
+
+          <div class="softphone-3d-card">
+            <div class="softphone-3d-top">
+              <div class="softphone-brand-mini">
+                <img src="assets/remvox-logo.png" alt="">
+                <div>
+                  <strong>RemVox</strong>
+                  <span>Softphone profesional</span>
+                </div>
+              </div>
+              <span class="softphone-status"><i></i> SIP conectado</span>
             </div>
+
+            <div class="softphone-call-zone">
+              <div class="call-avatar">RM</div>
+              <span class="call-eyebrow">Llamada activa</span>
+              <strong>Contacto comercial</strong>
+              <small>00:04:28</small>
+            </div>
+
+            <div class="softphone-actions">
+              <span title="Silenciar">◖</span>
+              <span title="DTMF">⌨</span>
+              <span title="Espera">Ⅱ</span>
+              <span title="Transferir">⇄</span>
+            </div>
+
+            <div class="softphone-wave" aria-hidden="true">
+              <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+            </div>
+          </div>
+
+          <div class="floating-tech-chip chip-browser">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="9"></circle>
+              <circle cx="12" cy="12" r="3.2"></circle>
+              <path d="M4.7 8h14.6M8.2 19.2 12 12m7.1-4-7.1 4"></path>
+            </svg>
+            <div><strong>Click-to-Dial</strong><span>Chrome → RemVox</span></div>
+          </div>
+
+          <div class="floating-tech-chip chip-sip">
+            <span class="chip-dot"></span>
+            <div><strong>SIP / PBX</strong><span>Conectividad empresarial</span></div>
           </div>
         </div>
       </div>
@@ -217,6 +659,72 @@
 
 
 
+
+
+
+    <!-- EXTENSIÓN CLICK-TO-DIAL -->
+    <section class="section extension-section" id="extension">
+      <div class="container extension-grid">
+        <div class="extension-copy">
+          <span class="section-kicker">Extensión para Chrome</span>
+          <h2>Haz clic en un número y continúa la llamada en RemVox.</h2>
+          <p>
+            La extensión Click-to-Dial conecta el navegador con RemVox para reducir pasos en la operación.
+            Desde páginas compatibles, selecciona o pulsa un número y envíalo directamente al softphone.
+          </p>
+
+          <div class="extension-points">
+            <div><span>01</span><p><strong>Detecta el número</strong><small>Desde tu flujo de trabajo en Chrome.</small></p></div>
+            <div><span>02</span><p><strong>Envía a RemVox</strong><small>La extensión comunica el número a la aplicación.</small></p></div>
+            <div><span>03</span><p><strong>Llama con un clic</strong><small>Menos digitación y mayor velocidad operativa.</small></p></div>
+          </div>
+
+          <a
+            class="btn btn-primary extension-store-btn"
+            href="https://chromewebstore.google.com/detail/remvox-click-to-dial-dual/fhdojbjgimoegemlkeflddflcdapmjcf"
+            target="_blank"
+            rel="noopener noreferrer"
+            onclick="if(window.gtag){gtag('event','extension_click',{extension:'remvox_click_to_dial',source:'landing'});}"
+          >
+            <span class="chrome-mark" aria-hidden="true"></span>
+            Ver extensión en Chrome Web Store
+            <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+
+        <div class="extension-visual" aria-label="Integración Chrome y RemVox">
+          <div class="browser-3d">
+            <div class="browser-bar">
+              <span></span><span></span><span></span>
+              <div class="browser-address">crm.empresa.local / cliente</div>
+            </div>
+            <div class="browser-body">
+              <div class="browser-line w70"></div>
+              <div class="browser-line w45"></div>
+
+              <button class="phone-number-demo" type="button" tabindex="-1" aria-hidden="true">
+                <span>☎</span>
+                987 654 321
+              </button>
+
+              <div class="browser-line w80"></div>
+              <div class="browser-line w55"></div>
+            </div>
+          </div>
+
+          <div class="integration-beam">
+            <i></i><i></i><i></i>
+          </div>
+
+          <div class="remvox-mini-device">
+            <img src="assets/remvox-logo.png" alt="">
+            <strong>RemVox</strong>
+            <span>Marcando...</span>
+            <div class="mini-call-button">☎</div>
+          </div>
+        </div>
+      </div>
+    </section>
 
 
     <!-- GALERÍA COMPACTA -->
