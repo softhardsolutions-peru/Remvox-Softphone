@@ -11,18 +11,21 @@ window.REMVOX_PUBLIC_CONFIG = {
 
   links: {
     guide: "", // URL directa de la guía .TXT
-    support: "mailto:softhardsolutionsperu@gmail.com?subject=Soporte%20t%C3%A9cnico%20RemVox",
-    contact: "mailto:softhardsolutionsperu@gmail.com?subject=Informaci%C3%B3n%20comercial%20RemVox"
+
+    support:
+      "mailto:softhardsolutionsperu@gmail.com?subject=Soporte%20t%C3%A9cnico%20RemVox",
+
+    contact:
+      "mailto:softhardsolutionsperu@gmail.com?subject=Informaci%C3%B3n%20comercial%20RemVox"
   },
 
   analytics: {
     enabled: true,
 
-    // Pega aquí tu ID de medición de Google Analytics 4.
-    // Ejemplo: G-ABC123DE45
-    measurementId: "",
+    // Google Analytics 4
+    measurementId: "G-KNF4E0JSBS",
 
-    // Eventos adicionales útiles para tu landing.
+    // Eventos adicionales
     trackDownloads: true,
     trackGallery: true,
     trackContactClicks: true
