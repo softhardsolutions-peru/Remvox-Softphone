@@ -6,7 +6,7 @@
 window.REMVOX_PUBLIC_CONFIG = {
   downloads: {
     windows: "https://github.com/softhardsolutions-peru/Remvox-Softphone/releases/tag/v5.0", 
-    linux: ""    // URL directa del paquete .DEB
+    linux: "https://github.com/softhardsolutions-peru/Remvox-Softphone/releases/tag/V5.0"
   },
 
   links: {
