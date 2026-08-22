@@ -10,7 +10,7 @@ window.REMVOX_PUBLIC_CONFIG = {
   },
 
   links: {
-    guide: "", // URL directa de la guía .TXT
+    guide: "https://github.com/softhardsolutions-peru/Remvox-Softphone/releases/tag/Guia",
 
     support:
       "mailto:softhardsolutionsperu@gmail.com?subject=Soporte%20t%C3%A9cnico%20RemVox",
