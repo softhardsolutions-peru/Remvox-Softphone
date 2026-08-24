@@ -5,8 +5,8 @@
 
 window.REMVOX_PUBLIC_CONFIG = {
   downloads: {
-    windows: "https://github.com/softhardsolutions-peru/Remvox-Softphone/releases/tag/v5.0", 
-    linux: "https://github.com/softhardsolutions-peru/Remvox-Softphone/releases/tag/V5.0"
+    windows: "https://github.com/softhardsolutions-peru/instalador-remvox/releases/tag/v5.0-Windows", 
+    linux: "https://github.com/softhardsolutions-peru/instalador-remvox/releases/tag/V5.0-Linux"
   },
 
   links: {
