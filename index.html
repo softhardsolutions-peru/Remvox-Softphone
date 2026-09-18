@@ -407,6 +407,60 @@
       .tech-orbit,.tech-pulse,.softphone-wave i,.integration-beam i,
       .mini-call-button{animation:none!important}
     }
+  
+    .donation-section{
+      position:relative;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at 86% 30%,rgba(31,111,178,.10),transparent 28%),
+        linear-gradient(180deg,#ffffff 0%,#f8fbfd 100%);
+    }
+    .donation-card{
+      display:grid;
+      grid-template-columns:minmax(0,1.35fr) minmax(280px,.65fr);
+      gap:42px;
+      align-items:center;
+      padding:34px;
+      border:1px solid #dfe8ef;
+      border-radius:22px;
+      background:rgba(255,255,255,.96);
+      box-shadow:0 18px 42px rgba(15,39,66,.08);
+    }
+    .donation-copy h2{
+      margin:8px 0 12px;
+      color:#0f2742;
+      font-size:clamp(1.8rem,3vw,2.7rem);
+      line-height:1.08;
+      letter-spacing:-.03em;
+    }
+    .donation-copy p{margin:0;color:#607087;line-height:1.7}
+    .donation-copy .donation-note{margin-top:14px;font-size:.82rem;color:#7a8796}
+    .donation-action{
+      padding:24px;
+      border-radius:18px;
+      background:linear-gradient(145deg,#102a47,#173f68);
+      color:#fff;
+      text-align:center;
+      box-shadow:0 18px 38px rgba(15,39,66,.18);
+    }
+    .donation-action strong{display:block;font-size:1.08rem;margin-bottom:6px}
+    .donation-action>span{display:block;color:#c9d9e6;font-size:.78rem;line-height:1.5;margin-bottom:17px}
+    .donation-paypal-btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;width:100%}
+    .paypal-mark{
+      display:inline-grid!important;
+      place-items:center;
+      width:24px;height:24px;
+      border-radius:7px;
+      background:#fff;
+      color:#1f6fb2!important;
+      font-weight:900;
+      font-size:.85rem;
+      margin:0!important;
+    }
+    @media (max-width:780px){
+      .donation-card{grid-template-columns:1fr;padding:24px}
+    }
+
   </style>
 
 </head>
@@ -432,6 +486,7 @@
         <a href="#extension">Extensión</a>
         <a href="#licenciamiento">Gratis y avanzado</a>
         <a href="#descargas">Descargas</a>
+        <a href="#donar">Donar</a>
         <a href="#soporte">Soporte</a>
       </nav>
 
@@ -564,8 +619,8 @@
 
           <article class="feature-card">
             <div class="feature-icon">👥</div>
-            <h3>Contactos</h3>
-            <p>Búsqueda, filtrado y carga de contactos con una experiencia preparada para operaciones de gran volumen.</p>
+            <h3>Contactos locales</h3>
+            <p>Guarda, edita y busca tus contactos personales directamente en tu equipo. La información se almacena localmente en RemVox y no se sincroniza con servidores externos.</p>
           </article>
 
           <article class="feature-card">
@@ -826,6 +881,44 @@
         </div>
       </div>
     </section>
+
+    <!-- DONACIONES -->
+    <section class="section donation-section" id="donar">
+      <div class="container">
+        <div class="donation-card">
+          <div class="donation-copy">
+            <span class="section-kicker">Apoya RemVox</span>
+            <h2>¿RemVox te resulta útil?</h2>
+            <p>
+              RemVox puede utilizarse gratuitamente para realizar llamadas manuales SIP.
+              Si quieres apoyar su desarrollo, mantenimiento y futuras mejoras, puedes realizar
+              una contribución voluntaria mediante PayPal.
+            </p>
+            <p class="donation-note">
+              Donar es completamente opcional y no limita el uso gratuito de RemVox.
+              Las donaciones no activan funciones disponibles mediante licencia.
+            </p>
+          </div>
+
+          <div class="donation-action">
+            <strong>Contribución voluntaria</strong>
+            <span>Tu apoyo ayuda a mantener y mejorar RemVox.</span>
+            <a
+              class="btn btn-primary donation-paypal-btn"
+              href="https://www.paypal.com/donate/?hosted_button_id=REEMPLAZAR_CON_TU_ID"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Donar a RemVox mediante PayPal"
+            >
+              <span class="paypal-mark" aria-hidden="true">P</span>
+              Donar con PayPal
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
 <!-- SOPORTE -->
     <section class="section section-soft" id="soporte">
       <div class="container support-grid">
@@ -873,6 +966,7 @@
       <div class="footer-links">
         <a href="#funciones">Funciones</a>
         <a href="#licenciamiento">Gratis y avanzado</a>
+        <a href="#donar">Donar</a>
         <a href="#soporte">Soporte</a>
       </div>
     </div>
